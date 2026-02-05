@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block title %}Cadastrar produto{% endblock %}
+{% block content %}
+    <div class="container-lg overflow-hidden bg-light p-5 rounded-3">
+        <h4 class="text-center">Lista de Produtos</h4>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button '<i class="bi bi-save2"></i> Salvar' button_type="submit" button_class="btn-primary" %}
+            <a href="{% url 'produtos' %}" class="btn btn-secondary">
+                <i class="bi bi-x-circle"></i>&nbsp; Cancelar
+            </a>
+        </form>
+    </div>
+{% endblock %}

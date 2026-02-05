@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 {% block title %}Login{% endblock %}
 {% block content %}
-<div class="row">
-    <div class="col-md-8 mx-auto social-container my-2 order-md-1">
-        <a class="btn btn-primary w-100 mb-2 d-flex align-items-center justify-content-center" href="{% url 'social:begin' 'facebook' %}">
-          <i class="bi bi-facebook"></i>&nbsp; Login com Facebook
-        </a>
-        <a class="btn btn-outline-dark w-100 mb-2 d-flex align-items-center justify-content-center" href="{% url 'social:begin' 'google-oauth2' %}">
-          <i class="bi bi-google"></i>&nbsp; Login com Google
-        </a>
+<div class="container-fluid bg-dark p-5 rounded-3 text-center mb-4">
+    <div class="card p-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+                <h4>Bem-vindo ao MyAPP</h4>
+                <p>Por favor, faça login usando uma das opções abaixo:</p>
+                <br/>
+                <a class="btn btn-primary w-100 mb-2 d-flex align-items-center justify-content-center" href="{% url 'social:begin' 'facebook' %}">
+                  <i class="bi bi-facebook"></i>&nbsp; Login com Facebook
+                </a>
+                <a class="btn btn-outline-dark w-100 mb-2 d-flex align-items-center justify-content-center" href="{% url 'social:begin' 'google-oauth2' %}">
+                  <i class="bi bi-google"></i>&nbsp; Login com Google
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock content %}

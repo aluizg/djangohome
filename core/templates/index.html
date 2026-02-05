@@ -1,38 +1,54 @@
 {% extends 'base.html' %}
 {% block title %}Inicio{% endblock %}
 {% block content %}
-<div class="row">
-    <div class="col-sm-12 mb-3">
-        <h4 class="text-center">Bem-vindo ao MyAPP {{ user.username }}</h4>
-        <p>Este é o sistema de gerenciamento de tarefas.</p>
+<div class="container-fluid bg-dark p-5 rounded-3 mb-4">
+    <div class="card p-5">
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <h4 class="text-center">Bem-vindo ao MyAPP {{ user.username }}</h4>
+                <p>Este é o sistema de gerenciamento de tarefas.</p>
+            </div>
+            {% csrf_token %}
+            {% for item in backends.associated %}
+                {% if item.provider == 'google-oauth2' %}
+                    <div id="usrimg" class="col-md-4 text-center">
+                        <img src="{{ item.extra_data.picture }}" alt="Avatar" class="rounded-circle" width="70" height="70">
+                    </div>
+                    <div id="usrdetail" class="col-md-8 social-container my-2">
+                        <p><strong>Logado via {{ item.provider|title }}</strong><br/>
+                        <strong>Nome:</strong> {{ item.extra_data.name }}<br/>
+                        <strong>Email:</strong> {{ item.extra_data.email }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="col-md-12 text-center mb-3">
+                <h5>Escolha uma das opções abaixo:</h5>
+            </div>
+            <div class="col-md-6 text-center mb-2">
+                <a class="btn btn-primary w-100 d-flex align-items-center justify-content-center" href="{% url 'produtos' %}">
+                  <i class="bi bi-box-seam"></i>&nbsp; Gerenciar Produtos
+                </a>
+            </div>
+            <div class="col-md-6 text-center mb-2">
+                <!--  logout via get foram bloqueados devido a falha de seguranca   -->
+                <form method="post" action="{% url 'logout' %}" class="d-inline">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center"><i class="bi bi-box-arrow-right"></i>&nbsp; Sair</button>
+                </form>
+            </div>
+
+            <!--    {% for sa in user.social_auth.all %}-->
+            <!--      {% if sa.provider == 'google-oauth2' %}-->
+            <!--        <div class="col-med-4 text-center">-->
+            <!--          <img src="{{ sa.extra_data.picture }}" alt="Avatar" class="rounded-circle" width="100" height="100">-->
+            <!--        </div>-->
+            <!--      {% elif sa.provider == 'facebook' %}-->
+            <!--        <div class="col-med-4 text-center">-->
+            <!--          <img src="{{ sa.extra_data.picture.data.url }}" alt="Avatar" class="rounded-circle" width="100" height="100">-->
+            <!--        </div>-->
+            <!--      {% endif %}-->
+            <!--    {% endfor %}-->
+        </div>
     </div>
-    {% csrf_token %}
-    {% for item in backends.associated %}
-        {% if item.provider == 'google-oauth2' %}
-            <div id="usrimg" class="col-md-4 text-center">
-                <img src="{{ item.extra_data.picture }}" alt="Avatar" class="rounded-circle" width="70" height="70">
-            </div>
-            <div id="usrdetail" class="col-md-8 social-container my-2">
-                <p><strong>Logado via {{ item.provider|title }}</strong><br/>
-                <strong>Nome:</strong> {{ item.extra_data.name }}<br/>
-                <strong>Email:</strong> {{ item.extra_data.email }}</p>
-            </div>
-        {% endif %}
-    {% endfor %}
-    <form method="post" action="{% url 'logout' %}" class="d-inline">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-outline-danger">Desconectar</button>
-    </form>
-    <!--    {% for sa in user.social_auth.all %}-->
-    <!--      {% if sa.provider == 'google-oauth2' %}-->
-    <!--        <div class="col-med-4 text-center">-->
-    <!--          <img src="{{ sa.extra_data.picture }}" alt="Avatar" class="rounded-circle" width="100" height="100">-->
-    <!--        </div>-->
-    <!--      {% elif sa.provider == 'facebook' %}-->
-    <!--        <div class="col-med-4 text-center">-->
-    <!--          <img src="{{ sa.extra_data.picture.data.url }}" alt="Avatar" class="rounded-circle" width="100" height="100">-->
-    <!--        </div>-->
-    <!--      {% endif %}-->
-    <!--    {% endfor %}-->
 </div>
 {% endblock content %}

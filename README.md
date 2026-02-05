@@ -1,4 +1,4 @@
-from djangohome.settings import LANGUAGE_CODEfrom djangohome.settings import TEMPLATES
+from djangohome.settings import INSTALLED_APPSfrom djangohome.settings import LANGUAGE_CODEfrom djangohome.settings import TEMPLATES
 
 # djangohome
 Projeto base com melhorias de segurança, SSO, CRUD e customizaçao no seção Admin
@@ -157,6 +157,16 @@ LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 ```
 
+## Formatação de valores numerico no settings.py
+No arquivo `settings.py`, adicione a seguinte configuração para formatação de valores numéricos:
+```python
+INSTALLED_APPS = [
+    ...
+    'django.contrib.humanize',
+    ...
+]
+```
+
 ## Configuracao para não criar novo usuario ao logar via SSO
 No arquivo `settings.py`, adicione a seguinte configuração para evitar a criação automática de novos usuários ao fazer login via SSO:
 ```python
@@ -217,3 +227,7 @@ Você pode usar a seguinte URL para incluir o Bootstrap5 via CDN em seus templat
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 ```
+
+## CRUD utilizando Class-Based Views
+Para implementar operações CRUD (Create, Read, Update, Delete) utilizando Class-Based Views no Django, você pode seguir o exemplo abaixo:
+
