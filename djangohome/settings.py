@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'core',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django_bootstrap5',
+    'core',
     'social_django'
 ]
 
@@ -138,6 +139,14 @@ SOCIAL_AUTH_EXTRA_DATA = [
     ('id', 'google_id'),
     ('email', 'email'),
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Django Home",
+    "site_header": "Django Home header",
+    "site_brand": "Django Home",
+    "welcome_title": "Bem-vindo ao Django Home",
+    "welcome_sign": "Central de administração Django Home",
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/

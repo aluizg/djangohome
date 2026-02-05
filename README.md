@@ -229,3 +229,11 @@ Você pode usar a seguinte URL para incluir o Bootstrap5 via CDN em seus templat
 ## CRUD utilizando Class-Based Views
 Para implementar operações CRUD (Create, Read, Update, Delete) utilizando Class-Based Views no Django, você pode seguir o exemplo abaixo:
 
+## Personalizando o site do Admin
+Para personalizar o site do Django Admin, você pode modificar os atributos `site_header`, `site_title` e `index_title` do objeto `admin.site` no arquivo `admin.py` da sua aplicação, ou no arquivo `urls.py` do projeto principal. Aqui está um exemplo de como fazer isso:
+```python
+from django.contrib import admin
+admin.site.site_header = "DjangoHome Admin"
+admin.site.site_title = "DjangoHome Admin Portal"
+admin.site.index_title = "Bem-vindo ao DjangoHome Admin"
+```

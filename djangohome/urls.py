@@ -21,3 +21,8 @@ urlpatterns = [
     path('controle/', admin.site.urls),
     path('', include('core.urls')),
 ]
+
+# personalização do cabeçalho do admin
+# admin.site.site_header = "DjangoHome Admin"
+# admin.site.site_title = "DjangoHome Admin Portal"
+# admin.site.index_title = "Bem-vindo ao DjangoHome Admin"

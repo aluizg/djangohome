@@ -17,6 +17,8 @@ class ProdutoListView(LoginRequiredMixin, ListView):
     template_name = 'produto_list.html'
     # Nome do objeto no contexto que será usado no template html
     context_object_name = 'produtos'
+    # Paginação: Define quantos itens serão exibidos por página
+    paginate_by = 2
     # Boa prática: Definir a ordenação diretamente na View
     # para garantir que os itens mais novos apareçam primeiro.
     ordering = ['-id']
