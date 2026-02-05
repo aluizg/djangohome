@@ -1,5 +1,3 @@
-from djangohome.settings import INSTALLED_APPSfrom djangohome.settings import LANGUAGE_CODEfrom djangohome.settings import TEMPLATES
-
 # djangohome
 Projeto base com melhorias de segurança, SSO, CRUD e customizaçao no seção Admin
 
