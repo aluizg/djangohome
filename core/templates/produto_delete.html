@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block title %}Apagar produto{% endblock %}
+{% block content %}
+    <form method="post" class="container-lg bg-light p-5 rounded-3">
+        {% csrf_token %}
+        <h4>Confirma a exclusão do produto "{{ produto.nome }}"?</h4>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-danger">Apagar</button>
+            <a href="{% url 'produtos' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}
